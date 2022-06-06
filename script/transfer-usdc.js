@@ -1,4 +1,4 @@
-async function transferUsdc() {
+async function transferUsdc(token) {
   let receiver = document.getElementById("receiver").value;
   let amount = document.getElementById("amount").value;
   let response;
@@ -7,7 +7,7 @@ async function transferUsdc() {
   const signer = provider.getSigner();
   let userAddress = await signer.getAddress();
 
-  const usdcContract = new ethers.Contract(usdc.address, usdc.abi, signer);
+  const usdcContract = new ethers.Contract(token.address, token.abi, signer);
 
   try {
     receiver = ethers.utils.getAddress(receiver);
